@@ -53,31 +53,36 @@ protocol BluetoothSerialDelegate: class {
 // Make some of the delegate functions optional
 extension BluetoothSerialDelegate {
     func serialDidReceiveString(_ message: String) {
-        print("serialDidReceiveString: \(message)")
+//        print("serialDidReceiveString: \(message)")
     }
     func serialDidReceiveBytes(_ bytes: [UInt8]) {
-        print("serialDidReceiveBytes")
+//        print("serialDidReceiveBytes")
     }
     func serialDidReceiveData(_ data: Data) {
-        print("serialDidReceiveData: \(data)")
+//        print("serialDidReceiveData: \(data)")
     }
     func serialDidReadRSSI(_ rssi: NSNumber) {
-        print("serialDidReadRSSI: \(rssi)")
+//        print("serialDidReadRSSI: \(rssi)")
     }
     func serialDidDiscoverPeripheral(_ peripheral: CBPeripheral, RSSI: NSNumber?) {
-        print("serialDidDiscoverPeripheral: \(String(describing: peripheral.name))")
+//        print("serialDidDiscoverPeripheral: \(String(describing: peripheral.name))")
     }
     func serialDidConnect(_ peripheral: CBPeripheral) {
-        print("serialDidConnect: \(String(describing: peripheral.name))")
+//        print("serialDidConnect: \(String(describing: peripheral.name))")
     }
     func serialDidFailToConnect(_ peripheral: CBPeripheral, error: NSError?) {
-        print("serialDidFailToConnect: \(String(describing: peripheral.name)) with error \(String(describing: error))")
+//        print("serialDidFailToConnect: \(String(describing: peripheral.name)) with error \(String(describing: error))")
     }
     func serialIsReady(_ peripheral: CBPeripheral) {
-        print("serialIsReady: \(String(describing: peripheral.name))")
+//        print("serialIsReady: \(String(describing: peripheral.name))")
     }
 }
 
+extension Data {
+    func hexEncodedString() -> String {
+        return map { String(format: "0x%02hhx ", $0) }.joined()
+    }
+}
 
 final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
@@ -121,7 +126,14 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
     var serviceUUID = CBUUID(string: "0003ABCD-0000-1000-8000-00805F9B0131")
     
     /// UUID of the characteristic to look for.
-    var characteristicUUID = CBUUID(string: "180A")
+//    00031201-0000-1000-8000-00805F9B0130
+//    00031202-0000-1000-8000-00805F9B0130
+//    00031203-0000-1000-8000-00805F9B0130
+//    00031204-0000-1000-8000-00805F9B0130
+//    00031205-0000-1000-8000-00805F9B0130
+//    00031206-0000-1000-8000-00805F9B0130
+//    00031210-0000-1000-8000-00805F9B0130
+    var characteristicUUID = CBUUID(string: "00031201-0000-1000-8000-00805F9B0130")
     
     /// Whether to write to the HM10 with or without response. Set automatically.
     /// Legit HM10 modules (from JNHuaMao) require 'Write without Response',
@@ -269,7 +281,8 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         // check whether the characteristic we're looking for (0xFFE1) is present - just to be sure
         for characteristic in service.characteristics! {
-//            if characteristic.uuid == characteristicUUID {
+            print (characteristic.uuid)
+            if characteristic.uuid == characteristicUUID {
                 // subscribe to this value (so we'll get notified when there is serial data for us..)
                 peripheral.setNotifyValue(true, for: characteristic)
                 
@@ -281,7 +294,7 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
                 
                 // notify the delegate we're ready for communication
                 delegate?.serialIsReady(peripheral)
-//            }
+            }
         }
     }
     
@@ -294,17 +307,14 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
         // first the data
         delegate?.serialDidReceiveData(data!)
         
-        // then the string
-        if let str = String(data: data!, encoding: String.Encoding.utf8) {
-            delegate?.serialDidReceiveString(str)
-        } else {
-            //print("Received an invalid string!") uncomment for debugging
-        }
-        
         // now the bytes array
         var bytes = [UInt8](repeating: 0, count: data!.count / MemoryLayout<UInt8>.size)
         (data! as NSData).getBytes(&bytes, length: data!.count)
-        delegate?.serialDidReceiveBytes(bytes)
+        
+        let dataStr = Data(bytes: bytes)
+//        print(dataStr.hexEncodedString())
+        let str = dataStr.hexEncodedString() + "\n\n"
+        delegate?.serialDidReceiveString(str)
     }
     
     func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {

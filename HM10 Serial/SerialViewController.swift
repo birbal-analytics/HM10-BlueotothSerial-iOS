@@ -124,7 +124,9 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
 //MARK: BluetoothSerialDelegate
     
     func serialDidReceiveString(_ message: String) {
+        print ("serialDidReceiveString \(message)")
         // add the received text to the textView, optionally with a line break at the end
+        
         mainTextView.text! += message
         let pref = UserDefaults.standard.integer(forKey: ReceivedMessageOptionKey)
         if pref == ReceivedMessageOption.newline.rawValue { mainTextView.text! += "\n" }
