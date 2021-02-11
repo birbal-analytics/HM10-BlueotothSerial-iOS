@@ -311,7 +311,7 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
         var bytes = [UInt8](repeating: 0, count: data!.count / MemoryLayout<UInt8>.size)
         (data! as NSData).getBytes(&bytes, length: data!.count)
         
-        let dataStr = Data(bytes: bytes)
+        let dataStr = Data(_: bytes)
 //        print(dataStr.hexEncodedString())
         let str = dataStr.hexEncodedString() + "\n\n"
         delegate?.serialDidReceiveString(str)
