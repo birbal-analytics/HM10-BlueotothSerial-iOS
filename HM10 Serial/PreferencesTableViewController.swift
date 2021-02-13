@@ -12,6 +12,7 @@ final class PreferencesTableViewController: UITableViewController {
     
 //MARK: Variables
     
+    var selectedFWSSOption: FWSSOption!
     var selectedMessageOption: MessageOption!
     var selectedReceivedMessageOption: ReceivedMessageOption!
 
@@ -22,9 +23,10 @@ final class PreferencesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // get current prefs
+        selectedFWSSOption = FWSSOption(rawValue: UserDefaults.standard.integer(forKey: FWSSOptionKey))
         selectedMessageOption = MessageOption(rawValue: UserDefaults.standard.integer(forKey: MessageOptionKey))
         selectedReceivedMessageOption = ReceivedMessageOption(rawValue: UserDefaults.standard.integer(forKey: ReceivedMessageOptionKey))
-        
+
     }
 
     
@@ -34,6 +36,31 @@ final class PreferencesTableViewController: UITableViewController {
        
         // is it for the selectedMessageOption or for the selectedReceivedMessageOption? (section 0 or 1 resp.)
         if (indexPath as NSIndexPath).section == 0 {
+            
+            // first clear the old checkmark
+            tableView.cellForRow(at: IndexPath(row:  0, section: 0))?.accessoryType = .none
+            tableView.cellForRow(at: IndexPath(row:  1, section: 0))?.accessoryType = .none
+            tableView.cellForRow(at: IndexPath(row:  2, section: 0))?.accessoryType = .none
+            tableView.cellForRow(at: IndexPath(row:  3, section: 0))?.accessoryType = .none
+            tableView.cellForRow(at: IndexPath(row:  4, section: 0))?.accessoryType = .none
+            tableView.cellForRow(at: IndexPath(row:  5, section: 0))?.accessoryType = .none
+            tableView.cellForRow(at: IndexPath(row:  6, section: 0))?.accessoryType = .none
+            tableView.cellForRow(at: IndexPath(row:  7, section: 0))?.accessoryType = .none
+            tableView.cellForRow(at: IndexPath(row:  8, section: 0))?.accessoryType = .none
+            tableView.cellForRow(at: IndexPath(row:  9, section: 0))?.accessoryType = .none
+            tableView.cellForRow(at: IndexPath(row: 10, section: 0))?.accessoryType = .none
+
+            // get the newly selected option
+            let selectedCell = (indexPath as NSIndexPath).row
+            selectedFWSSOption = FWSSOption(rawValue: selectedCell)
+
+            // set new checkmark
+            tableView.cellForRow(at: IndexPath(row: selectedCell, section: 0))?.accessoryType = UITableViewCell.AccessoryType.checkmark
+            
+            // and finally .. save it
+            UserDefaults.standard.set(selectedCell, forKey: FWSSOptionKey)
+            
+        } else if (indexPath as NSIndexPath).section == 1 {
             
             // first clear the old checkmark
             tableView.cellForRow(at: IndexPath(row: 0, section: 0))?.accessoryType = .none
@@ -46,12 +73,12 @@ final class PreferencesTableViewController: UITableViewController {
             selectedMessageOption = MessageOption(rawValue: selectedCell)
 
             // set new checkmark
-            tableView.cellForRow(at: IndexPath(row: selectedCell, section: 0))?.accessoryType = UITableViewCell.AccessoryType.checkmark
+            tableView.cellForRow(at: IndexPath(row: selectedCell, section: 1))?.accessoryType = UITableViewCell.AccessoryType.checkmark
             
             // and finally .. save it
             UserDefaults.standard.set(selectedCell, forKey: MessageOptionKey)
             
-        } else if (indexPath as NSIndexPath).section == 1 {
+        } else if (indexPath as NSIndexPath).section == 2 {
             
             // first, clear the old checkmark
             tableView.cellForRow(at: IndexPath(row: 0, section: 1))?.accessoryType = .none
@@ -62,7 +89,7 @@ final class PreferencesTableViewController: UITableViewController {
             selectedReceivedMessageOption = ReceivedMessageOption(rawValue: selectedCell)
 
             // set new checkmark
-            tableView.cellForRow(at: IndexPath(row: selectedCell, section: 1))?.accessoryType = UITableViewCell.AccessoryType.checkmark
+            tableView.cellForRow(at: IndexPath(row: selectedCell, section: 2))?.accessoryType = UITableViewCell.AccessoryType.checkmark
             
             // save it
             UserDefaults.standard.set(selectedCell, forKey: ReceivedMessageOptionKey)

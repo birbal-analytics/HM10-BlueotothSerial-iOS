@@ -11,6 +11,21 @@ import CoreBluetooth
 import QuartzCore
 
 /// The option to add a \n or \r or \r\n to the end of the send message
+enum FWSSOption: Int {
+    case none,
+         spaOutputLevel,
+         tenDayTimerCountValue,
+         salineTestData,
+         fourMonthTimer,
+         currentOperatingVoltage, // Cell output
+         generationInProgress,    // Status
+         errorCodes,
+         cumulativeGenerationCycleCount, // Cycle meter
+         firmwareRevision,
+         catridgeStatus
+}
+
+/// The option to add a \n or \r or \r\n to the end of the send message
 enum MessageOption: Int {
     case noLineEnding,
          newline,
@@ -126,10 +141,45 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
     func serialDidReceiveString(_ message: String) {
         print ("serialDidReceiveString \(message)")
         // add the received text to the textView, optionally with a line break at the end
+
+        let array = message.components(separatedBy: " ")
+        let fwssPref = UserDefaults.standard.integer(forKey: FWSSOptionKey)
+        var msg = message
+//        if (array[1] == "0x29") {
+//            print ("FWSS field with pref \(fwssPref)")
+//
+//            switch fwssPref {
+//            case FWSSOption.none.rawValue:
+//                msg = message
+//            case FWSSOption.spaOutputLevel.rawValue:
+//                msg = array[7]
+//            case FWSSOption.tenDayTimerCountValue.rawValue:
+//                msg = array[8]
+//            case FWSSOption.salineTestData.rawValue:
+//                msg = array[9]
+//            case FWSSOption.fourMonthTimer.rawValue:
+//                msg = array[10]
+//            case FWSSOption.currentOperatingVoltage.rawValue:
+//                msg = array[11]
+//            case FWSSOption.generationInProgress.rawValue:
+//                msg = array[12]
+//            case FWSSOption.errorCodes.rawValue:
+//                msg = array[13]
+//            case FWSSOption.cumulativeGenerationCycleCount.rawValue:
+//                msg = array[16]+array[15]+array[14]
+//            case FWSSOption.firmwareRevision.rawValue:
+//                msg = array[17]
+//            case FWSSOption.catridgeStatus.rawValue:
+//                msg = array[18]
+//            default:
+//                msg = message
+//            }
+//        }
         
-        mainTextView.text! += message
+        mainTextView.text! += msg
         let pref = UserDefaults.standard.integer(forKey: ReceivedMessageOptionKey)
         if pref == ReceivedMessageOption.newline.rawValue { mainTextView.text! += "\n" }
+        
         textViewScrollToBottom()
     }
     
