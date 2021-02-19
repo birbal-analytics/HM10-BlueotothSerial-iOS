@@ -10,7 +10,7 @@
         <!--Scanning ...-->
         <scene sceneID="TIE-39-MG2">
             <objects>
-                <viewController id="33X-Xk-e4d" customClass="ScannerViewController" customModule="Serial" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="33X-Xk-e4d" customClass="ScannerViewController" customModule="LOAC" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pua-UU-5uR"/>
                         <viewControllerLayoutGuide type="bottom" id="LU7-hj-xrB"/>
@@ -96,7 +96,7 @@
         <!--Preferences-->
         <scene sceneID="jIU-t6-8rt">
             <objects>
-                <tableViewController id="bWD-6R-mwZ" customClass="PreferencesTableViewController" customModule="Serial" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="bWD-6R-mwZ" customClass="PreferencesTableViewController" customModule="LOAC" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="xnI-aY-ZPt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -424,7 +424,7 @@
         <!--Bluetooth Serial-->
         <scene sceneID="fbM-Ih-5Rw">
             <objects>
-                <viewController id="EEx-bJ-XFj" customClass="SerialViewController" customModule="Serial" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EEx-bJ-XFj" customClass="SerialViewController" customModule="LOAC" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8L2-oJ-fyr"/>
                         <viewControllerLayoutGuide type="bottom" id="JDL-SJ-Cln"/>
@@ -453,10 +453,10 @@
                                     <constraint firstAttribute="height" constant="44" id="f6N-Ij-YqS"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKa-Ue-hGn">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uKa-Ue-hGn">
                                 <rect key="frame" x="12" y="52" width="347" height="563"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="systemBlueColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -464,14 +464,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="uKa-Ue-hGn" firstAttribute="top" secondItem="8L2-oJ-fyr" secondAttribute="bottom" constant="-64" id="BAc-Hy-L1B"/>
-                            <constraint firstItem="5bc-q6-XAi" firstAttribute="top" secondItem="uKa-Ue-hGn" secondAttribute="bottom" constant="12" id="JUG-OX-LHh"/>
-                            <constraint firstItem="uKa-Ue-hGn" firstAttribute="trailing" secondItem="fvc-it-Qiq" secondAttribute="trailingMargin" constant="4" id="KCA-11-u2g"/>
-                            <constraint firstAttribute="centerX" secondItem="uKa-Ue-hGn" secondAttribute="centerX" id="Z9Y-Vq-sEm"/>
+                            <constraint firstItem="uKa-Ue-hGn" firstAttribute="top" secondItem="8L2-oJ-fyr" secondAttribute="bottom" constant="8" id="ey2-dg-vYc"/>
                             <constraint firstItem="5bc-q6-XAi" firstAttribute="width" secondItem="fvc-it-Qiq" secondAttribute="width" id="fmO-pW-skd"/>
                             <constraint firstItem="JDL-SJ-Cln" firstAttribute="top" secondItem="5bc-q6-XAi" secondAttribute="bottom" id="hMY-tP-mlG"/>
                             <constraint firstItem="5bc-q6-XAi" firstAttribute="centerX" secondItem="fvc-it-Qiq" secondAttribute="centerX" id="lrD-zJ-tij"/>
-                            <constraint firstItem="uKa-Ue-hGn" firstAttribute="leading" secondItem="fvc-it-Qiq" secondAttribute="leadingMargin" constant="-4" id="png-fP-Md8"/>
+                            <constraint firstItem="uKa-Ue-hGn" firstAttribute="centerY" secondItem="fvc-it-Qiq" secondAttribute="centerY" id="mDO-Z1-tRp"/>
+                            <constraint firstItem="uKa-Ue-hGn" firstAttribute="trailing" secondItem="fvc-it-Qiq" secondAttribute="trailingMargin" id="ySG-H3-Gmp"/>
+                            <constraint firstItem="uKa-Ue-hGn" firstAttribute="leading" secondItem="fvc-it-Qiq" secondAttribute="leadingMargin" constant="-4" id="z5a-90-vD6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Bluetooth Serial" id="bYe-jD-tRw">
