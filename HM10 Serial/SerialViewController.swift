@@ -45,6 +45,8 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
     
     @IBOutlet weak var mainTextView: UITextView!
     @IBOutlet weak var secondTextView: UITextView!
+    @IBOutlet weak var thirdTextView: UITextView!
+    @IBOutlet weak var fourthTextView: UITextView!
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint! // used to move the textField up when the keyboard is present
@@ -63,6 +65,8 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
         // UI
         mainTextView.text = ""
         secondTextView.text = ""
+        thirdTextView.text = ""
+        fourthTextView.text = ""
         reloadView()
         
         NotificationCenter.default.addObserver(self, selector: #selector(SerialViewController.reloadView), name: NSNotification.Name(rawValue: "reloadStartViewController"), object: nil)
@@ -142,6 +146,16 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
         secondTextView.scrollRangeToVisible(range)
     }
     
+    func thirdTextViewScrollToBottom() {
+        let range = NSMakeRange(NSString(string: thirdTextView.text).length - 1, 1)
+        thirdTextView.scrollRangeToVisible(range)
+    }
+    
+    func fourthTextViewScrollToBottom() {
+        let range = NSMakeRange(NSString(string: fourthTextView.text).length - 1, 1)
+        fourthTextView.scrollRangeToVisible(range)
+    }
+    
 
 //MARK: BluetoothSerialDelegate
     
@@ -184,17 +198,13 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
 //        }
         
         if (array[1] == "0x29") {
-            mainTextView.text! += msg
-            let pref = UserDefaults.standard.integer(forKey: ReceivedMessageOptionKey)
-            if pref == ReceivedMessageOption.newline.rawValue { mainTextView.text! += "\n" }
-            
-            mainTextViewScrollToBottom()
+            mainTextView.text = msg
         } else if (array[1] == "0x33") {
-            secondTextView.text! += msg
-            let pref = UserDefaults.standard.integer(forKey: ReceivedMessageOptionKey)
-            if pref == ReceivedMessageOption.newline.rawValue { secondTextView.text! += "\n" }
-            
-            secondTextViewScrollToBottom()
+            secondTextView.text = msg
+        } else if (array[1] == "0x21") {
+            thirdTextView.text = msg
+        } else if (array[1] == "0x24") {
+            fourthTextView.text = msg
         }
     }
     
