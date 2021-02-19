@@ -44,6 +44,7 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
 //MARK: IBOutlets
     
     @IBOutlet weak var mainTextView: UITextView!
+    @IBOutlet weak var secondTextView: UITextView!
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint! // used to move the textField up when the keyboard is present
@@ -61,6 +62,7 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
         
         // UI
         mainTextView.text = ""
+        secondTextView.text = ""
         reloadView()
         
         NotificationCenter.default.addObserver(self, selector: #selector(SerialViewController.reloadView), name: NSNotification.Name(rawValue: "reloadStartViewController"), object: nil)
@@ -96,7 +98,7 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
         UIView.animate(withDuration: 1, delay: 0, options: UIView.AnimationOptions(), animations: { () -> Void in
             self.bottomConstraint.constant = keyboardFrame.size.height
             }, completion: { Bool -> Void in
-            self.textViewScrollToBottom()
+            self.mainTextViewScrollToBottom()
         })
     }
     
@@ -130,9 +132,14 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
         }
     }
     
-    func textViewScrollToBottom() {
+    func mainTextViewScrollToBottom() {
         let range = NSMakeRange(NSString(string: mainTextView.text).length - 1, 1)
         mainTextView.scrollRangeToVisible(range)
+    }
+    
+    func secondTextViewScrollToBottom() {
+        let range = NSMakeRange(NSString(string: secondTextView.text).length - 1, 1)
+        secondTextView.scrollRangeToVisible(range)
     }
     
 
@@ -176,11 +183,19 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
 //            }
 //        }
         
-        mainTextView.text! += msg
-        let pref = UserDefaults.standard.integer(forKey: ReceivedMessageOptionKey)
-        if pref == ReceivedMessageOption.newline.rawValue { mainTextView.text! += "\n" }
-        
-        textViewScrollToBottom()
+        if (array[1] == "0x29") {
+            mainTextView.text! += msg
+            let pref = UserDefaults.standard.integer(forKey: ReceivedMessageOptionKey)
+            if pref == ReceivedMessageOption.newline.rawValue { mainTextView.text! += "\n" }
+            
+            mainTextViewScrollToBottom()
+        } else if (array[1] == "0x33") {
+            secondTextView.text! += msg
+            let pref = UserDefaults.standard.integer(forKey: ReceivedMessageOptionKey)
+            if pref == ReceivedMessageOption.newline.rawValue { secondTextView.text! += "\n" }
+            
+            secondTextViewScrollToBottom()
+        }
     }
     
     func serialDidDisconnect(_ peripheral: CBPeripheral, error: NSError?) {
