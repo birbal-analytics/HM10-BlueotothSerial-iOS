@@ -155,16 +155,22 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
         print ("serialDidReceiveString \(message)")
         // add the received text to the textView, optionally with a line break at the end
 
-        let array = message.components(separatedBy: " ")
+        
+        let msg = message.replacingOccurrences(of: "0x", with: "")
+        let array = msg.components(separatedBy: " ")
         let fwssPref = UserDefaults.standard.integer(forKey: FWSSOptionKey)
-        var msg = message
-        if (array[1] == "0x29") {
+        if (array[1] == "29") {
             print ("FWSS field with pref \(fwssPref)")
             
-            firstTextView.text = array[7]
-            secondTextView.text = array[8]
-            thirdTextView.text = array[9]
-            fourthTextView.text = array[10]
+            let value1 = UInt8(array[7], radix: 16)
+            firstTextView.text = "\(value1!)"
+            let value2 = UInt8(array[8], radix: 16)
+            secondTextView.text = "\(value2!)"
+            let value3 = UInt8(array[9], radix: 16)
+            thirdTextView.text = "\(value3!)"
+            let value4 = UInt8(array[10], radix: 16)
+            fourthTextView.text = "\(value4!)"
+            
 
 //            switch fwssPref {
 //            case FWSSOption.none.rawValue:
