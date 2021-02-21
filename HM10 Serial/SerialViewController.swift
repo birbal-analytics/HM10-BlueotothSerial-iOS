@@ -43,12 +43,11 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
 
 //MARK: IBOutlets
     
-    @IBOutlet weak var mainTextView: UITextView!
+    @IBOutlet weak var firstTextView: UITextView!
     @IBOutlet weak var secondTextView: UITextView!
     @IBOutlet weak var thirdTextView: UITextView!
     @IBOutlet weak var fourthTextView: UITextView!
     @IBOutlet weak var messageField: UITextField!
-    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint! // used to move the textField up when the keyboard is present
     @IBOutlet weak var barButton: UIBarButtonItem!
     @IBOutlet weak var navItem: UINavigationItem!
@@ -63,7 +62,7 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
         serial = BluetoothSerial(delegate: self)
         
         // UI
-        mainTextView.text = ""
+        firstTextView.text = ""
         secondTextView.text = ""
         thirdTextView.text = ""
         fourthTextView.text = ""
@@ -79,13 +78,6 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
         let tap = UITapGestureRecognizer(target: self, action: #selector(SerialViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
-        
-        // style the bottom UIView
-        bottomView.layer.masksToBounds = false
-        bottomView.layer.shadowOffset = CGSize(width: 0, height: -1)
-        bottomView.layer.shadowRadius = 0
-        bottomView.layer.shadowOpacity = 0.5
-        bottomView.layer.shadowColor = UIColor.gray.cgColor
     }
 
     deinit {
@@ -137,8 +129,8 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
     }
     
     func mainTextViewScrollToBottom() {
-        let range = NSMakeRange(NSString(string: mainTextView.text).length - 1, 1)
-        mainTextView.scrollRangeToVisible(range)
+        let range = NSMakeRange(NSString(string: firstTextView.text).length - 1, 1)
+        firstTextView.scrollRangeToVisible(range)
     }
     
     func secondTextViewScrollToBottom() {
@@ -166,9 +158,14 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
         let array = message.components(separatedBy: " ")
         let fwssPref = UserDefaults.standard.integer(forKey: FWSSOptionKey)
         var msg = message
-//        if (array[1] == "0x29") {
-//            print ("FWSS field with pref \(fwssPref)")
-//
+        if (array[1] == "0x29") {
+            print ("FWSS field with pref \(fwssPref)")
+            
+            firstTextView.text = array[7]
+            secondTextView.text = array[8]
+            thirdTextView.text = array[9]
+            fourthTextView.text = array[10]
+
 //            switch fwssPref {
 //            case FWSSOption.none.rawValue:
 //                msg = message
@@ -195,17 +192,17 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
 //            default:
 //                msg = message
 //            }
-//        }
-        
-        if (array[1] == "0x29") {
-            mainTextView.text = msg
-        } else if (array[1] == "0x33") {
-            secondTextView.text = msg
-        } else if (array[1] == "0x21") {
-            thirdTextView.text = msg
-        } else if (array[1] == "0x24") {
-            fourthTextView.text = msg
         }
+        
+//        if (array[1] == "0x01") {
+//            firstTextView.text = msg
+//        } else if (array[1] == "0x33") {
+//            secondTextView.text = msg
+//        } else if (array[1] == "0x21") {
+//            thirdTextView.text = msg
+//        } else if (array[1] == "0x24") {
+//            fourthTextView.text = msg
+//        }
     }
     
     func serialDidDisconnect(_ peripheral: CBPeripheral, error: NSError?) {
@@ -262,7 +259,8 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
     }
     
     @objc func dismissKeyboard() {
-        messageField.resignFirstResponder()
+        if (messageField != nil) { messageField.resignFirstResponder()
+        }
     }
     
     
