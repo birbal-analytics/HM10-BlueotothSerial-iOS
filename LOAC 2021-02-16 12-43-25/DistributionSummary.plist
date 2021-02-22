@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>LOAC.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>1CDE6D4B9EA10C1C4602D036FC4408337EB4C691</string>
+				<key>dateExpires</key>
+				<string>2/16/22</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>LK9H442FSJ.com.watkins.loac</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>LK9H442FSJ</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>LK9H442FSJ.com.watkins.loac</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>LOAC.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>e4edbe87-9b61-4344-be0c-1dce5b4091c0</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: com.watkins.loac</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>LK9H442FSJ</string>
+				<key>name</key>
+				<string>Watkins Manufacturing Corporation</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-let FWSSOptionKey = "FWSSOption"
+let SensorOptionKey = "SensorOption"
 let MessageOptionKey = "MessageOption"
 let ReceivedMessageOptionKey = "ReceivedMessageOption"
 //let WriteWithResponseKey = "WriteWithResponse" No longer neccessary v1.1.2
@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         // register default user prefs
-        UserDefaults.standard.register(defaults: [FWSSOptionKey: FWSSOption.none.rawValue,
+        UserDefaults.standard.register(defaults: [SensorOptionKey: SensorOption.none.rawValue,
                                                   MessageOptionKey: MessageOption.noLineEnding.rawValue,
                                                   ReceivedMessageOptionKey: ReceivedMessageOption.none.rawValue])
         

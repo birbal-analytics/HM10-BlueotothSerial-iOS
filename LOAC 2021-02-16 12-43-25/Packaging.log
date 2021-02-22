@@ -1,0 +1,171 @@
+2021-02-16 20:43:17 +0000  Initial pipeline context: <IDEDistributionProcessingPipelineContext: 0x7fd141bfbb40; archive(resolved)='<IDEArchive: 0x7fd142696fd0>', distributionTask(resolved)='2', distributionDestination(resolved)='1', distributionMethod(resolved)='<IDEDistributionMethodDevelopmentSigned: 0x7fd13f6b2010>', team(resolved)='<IDEProvisioningDisambiguatableBasicTeam: 0x7fd14091a920; teamID='LK9H442FSJ', teamName='Watkins Manufacturing Corporation', teamType='Company', username='srujan.sriram@watkinsmfg.com', isFreeProvisioningTeam='0'>'>
+	Chain (14, self inclusive):
+	<IDEDistributionProcessingPipelineContext: 0x7fd141bfbb40; archive = '<IDEArchive: 0x7fd142696fd0>', distributionMethod='<IDEDistributionMethodDevelopmentSigned: 0x7fd13f6b2010>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fd14091a920; teamID='LK9H442FSJ', teamName='Watkins Manufacturing Corporation', teamType='Company', username='srujan.sriram@watkinsmfg.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionProcessingPipelineContext: 0x7fd141b1cbe0; archive = '<IDEArchive: 0x7fd142696fd0>', distributionMethod='<IDEDistributionMethodDevelopmentSigned: 0x7fd13f6b2010>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fd14091a920; teamID='LK9H442FSJ', teamName='Watkins Manufacturing Corporation', teamType='Company', username='srujan.sriram@watkinsmfg.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7fd141bf6b60; archive = '<IDEArchive: 0x7fd142696fd0>', distributionMethod='<IDEDistributionMethodDevelopmentSigned: 0x7fd13f6b2010>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fd14091a920; teamID='LK9H442FSJ', teamName='Watkins Manufacturing Corporation', teamType='Company', username='srujan.sriram@watkinsmfg.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7fd13f0d3830; archive = '<IDEArchive: 0x7fd142696fd0>', distributionMethod='<IDEDistributionMethodDevelopmentSigned: 0x7fd13f6b2010>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fd14091a920; teamID='LK9H442FSJ', teamName='Watkins Manufacturing Corporation', teamType='Company', username='srujan.sriram@watkinsmfg.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7fd141b0a7a0; archive = '<IDEArchive: 0x7fd142696fd0>', distributionMethod='<IDEDistributionMethodDevelopmentSigned: 0x7fd13f6b2010>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fd14091a920; teamID='LK9H442FSJ', teamName='Watkins Manufacturing Corporation', teamType='Company', username='srujan.sriram@watkinsmfg.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7fd141b0b0a0; archive = '<IDEArchive: 0x7fd142696fd0>', distributionMethod='<IDEDistributionMethodDevelopmentSigned: 0x7fd13f6b2010>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fd14091a920; teamID='LK9H442FSJ', teamName='Watkins Manufacturing Corporation', teamType='Company', username='srujan.sriram@watkinsmfg.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7fd141be85a0; archive = '<IDEArchive: 0x7fd142696fd0>', distributionMethod='<IDEDistributionMethodDevelopmentSigned: 0x7fd13f6b2010>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fd14091a920; teamID='LK9H442FSJ', teamName='Watkins Manufacturing Corporation', teamType='Company', username='srujan.sriram@watkinsmfg.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7fd141bae220; archive = '<IDEArchive: 0x7fd142696fd0>', distributionMethod='<IDEDistributionMethodDevelopmentSigned: 0x7fd13f6b2010>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fd14091a920; teamID='LK9H442FSJ', teamName='Watkins Manufacturing Corporation', teamType='Company', username='srujan.sriram@watkinsmfg.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7fd141b92700; archive = '<IDEArchive: 0x7fd142696fd0>', distributionMethod='<IDEDistributionMethodDevelopmentSigned: 0x7fd13f6b2010>', team='<IDEProvisioningDisambiguatableBasicTeam: 0x7fd14091a920; teamID='LK9H442FSJ', teamName='Watkins Manufacturing Corporation', teamType='Company', username='srujan.sriram@watkinsmfg.com', isFreeProvisioningTeam='0'>'>
+	<IDEDistributionContext: 0x7fd141b8d2c0; archive = '<IDEArchive: 0x7fd142696fd0>', distributionMethod='<IDEDistributionMethodDevelopmentSigned: 0x7fd13f6b2010>', team='(null)'>
+	<IDEDistributionContext: 0x7fd14410cab0; archive = '<IDEArchive: 0x7fd142696fd0>', distributionMethod='<IDEDistributionMethodDevelopmentSigned: 0x7fd13f6b2010>', team='(null)'>
+	<IDEDistributionContext: 0x7fd14259e350; archive = '<IDEArchive: 0x7fd142696fd0>', distributionMethod='<IDEDistributionMethodDevelopmentSigned: 0x7fd13f6b2010>', team='(null)'>
+	<IDEDistributionContext: 0x7fd13bbfe040; archive = '<IDEArchive: 0x7fd142696fd0>', distributionMethod='<IDEDistributionMethodDevelopmentSigned: 0x7fd13f6b2010>', team='(null)'>
+	<IDEDistributionContext: 0x7fd1411517c0; archive = '<IDEArchive: 0x7fd142696fd0>', distributionMethod='(null)', team='(null)'>
+</IDEDistributionProcessingPipelineContext: 0x7fd141bfbb40>
+2021-02-16 20:43:17 +0000  Processing step: IDEDistributionCreateDestRootStep
+2021-02-16 20:43:17 +0000  Processing step: IDEDistributionCopyItemStep
+2021-02-16 20:43:17 +0000  Running /usr/bin/ditto '-V' '/Users/srujansriram/Library/Developer/Xcode/Archives/2021-02-16/LOAC 2-16-21, 12.35 PM.xcarchive/Products/Applications/LOAC.app' '/var/folders/63/wjlhwvpd5ts75cjh72w1_tgr0000gp/T/XcodeDistPipeline.~~~v3qb9r/Root/Payload/LOAC.app'
+2021-02-16 20:43:17 +0000  >>> Copying /Users/srujansriram/Library/Developer/Xcode/Archives/2021-02-16/LOAC 2-16-21, 12.35 PM.xcarchive/Products/Applications/LOAC.app 
+2021-02-16 20:43:17 +0000  copying file ./_CodeSignature/CodeResources ... 
+2021-02-16 20:43:17 +0000  5131 bytes for ./_CodeSignature/CodeResources
+2021-02-16 20:43:17 +0000  copying file ./AppIcon60x60@2x.png ... 
+2021-02-16 20:43:17 +0000  8217 bytes for ./AppIcon60x60@2x.png
+2021-02-16 20:43:17 +0000  copying file ./Base.lproj/LaunchScreen.nib ... 
+2021-02-16 20:43:17 +0000  3876 bytes for ./Base.lproj/LaunchScreen.nib
+2021-02-16 20:43:17 +0000  copying file ./Base.lproj/Main.storyboardc/33X-Xk-e4d-view-m6n-mb-AsH.nib ... 
+2021-02-16 20:43:17 +0000  7606 bytes for ./Base.lproj/Main.storyboardc/33X-Xk-e4d-view-m6n-mb-AsH.nib
+2021-02-16 20:43:17 +0000  copying file ./Base.lproj/Main.storyboardc/EEx-bJ-XFj-view-fvc-it-Qiq.nib ... 
+2021-02-16 20:43:17 +0000  6563 bytes for ./Base.lproj/Main.storyboardc/EEx-bJ-XFj-view-fvc-it-Qiq.nib
+2021-02-16 20:43:17 +0000  copying file ./Base.lproj/Main.storyboardc/UINavigationController-HTb-Lt-944.nib ... 
+2021-02-16 20:43:17 +0000  2263 bytes for ./Base.lproj/Main.storyboardc/UINavigationController-HTb-Lt-944.nib
+2021-02-16 20:43:17 +0000  copying file ./Base.lproj/Main.storyboardc/UINavigationController-dxf-N9-FmM.nib ... 
+2021-02-16 20:43:17 +0000  2753 bytes for ./Base.lproj/Main.storyboardc/UINavigationController-dxf-N9-FmM.nib
+2021-02-16 20:43:17 +0000  copying file ./Base.lproj/Main.storyboardc/Info.plist ... 
+2021-02-16 20:43:17 +0000  441 bytes for ./Base.lproj/Main.storyboardc/Info.plist
+2021-02-16 20:43:17 +0000  copying file ./Base.lproj/Main.storyboardc/UINavigationController-Ovv-1F-4EP.nib ... 
+2021-02-16 20:43:17 +0000  2034 bytes for ./Base.lproj/Main.storyboardc/UINavigationController-Ovv-1F-4EP.nib
+2021-02-16 20:43:17 +0000  copying file ./Base.lproj/Main.storyboardc/bWD-6R-mwZ-view-xnI-aY-ZPt.nib ... 
+2021-02-16 20:43:17 +0000  12170 bytes for ./Base.lproj/Main.storyboardc/bWD-6R-mwZ-view-xnI-aY-ZPt.nib
+2021-02-16 20:43:17 +0000  copying file ./LOAC ... 
+2021-02-16 20:43:17 +0000  227600 bytes for ./LOAC
+2021-02-16 20:43:17 +0000  copying file ./Assets.car ... 
+2021-02-16 20:43:17 +0000  381295 bytes for ./Assets.car
+2021-02-16 20:43:17 +0000  copying file ./AppIcon76x76@2x~ipad.png ... 
+10589 bytes for ./AppIcon76x76@2x~ipad.png
+2021-02-16 20:43:17 +0000  copying file ./embedded.mobileprovision ... 
+2021-02-16 20:43:17 +0000  18222 bytes for ./embedded.mobileprovision
+2021-02-16 20:43:17 +0000  copying file ./Info.plist ... 
+2021-02-16 20:43:17 +0000  1466 bytes for ./Info.plist
+2021-02-16 20:43:17 +0000  copying file ./PkgInfo ... 
+2021-02-16 20:43:17 +0000  8 bytes for ./PkgInfo
+2021-02-16 20:43:17 +0000  /usr/bin/ditto exited with 0
+2021-02-16 20:43:17 +0000  Processing step: IDEDistributionEmbedProfileStep
+2021-02-16 20:43:17 +0000  Processing step: IDEDistributionInfoPlistStep
+2021-02-16 20:43:17 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2021-02-16 20:43:17 +0000  Processing step: IDEDistributionAppThinningPlistStep
+2021-02-16 20:43:17 +0000  Skipping step: IDEDistributionAppThinningPlistStep because it said so
+2021-02-16 20:43:17 +0000  Processing step: IDEDistributionCompileBitcodeStep
+2021-02-16 20:43:17 +0000  Skipping step: IDEDistributionCompileBitcodeStep because it said so
+2021-02-16 20:43:17 +0000  Processing step: IDEDistributionCodeSlimmingStep
+2021-02-16 20:43:17 +0000  Processing step: IDEDistributionCopyBCSymbolMapsStep
+2021-02-16 20:43:17 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2021-02-16 20:43:17 +0000  Processing step: IDEDistributionSymbolsStep
+2021-02-16 20:43:17 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2021-02-16 20:43:17 +0000  Processing step: IDEDistributionAppThinningStep
+2021-02-16 20:43:17 +0000  Skipping step: IDEDistributionAppThinningStep because it said so
+2021-02-16 20:43:17 +0000  Processing step: IDEDistributionArchThinningStep
+2021-02-16 20:43:17 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/63/wjlhwvpd5ts75cjh72w1_tgr0000gp/T/XcodeDistPipeline.~~~v3qb9r/Root/Payload/LOAC.app/LOAC' '-verify_arch' 'arm64e'
+2021-02-16 20:43:17 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2021-02-16 20:43:17 +0000  Skipping architecture thinning for item "LOAC" because arch "arm64e" wasn't found
+2021-02-16 20:43:17 +0000  Processing step: IDEDistributionODRStep
+2021-02-16 20:43:17 +0000  Processing step: IDEDistributionStripXattrsStep
+2021-02-16 20:43:17 +0000  Running /usr/bin/xattr '-crs' '/var/folders/63/wjlhwvpd5ts75cjh72w1_tgr0000gp/T/XcodeDistPipeline.~~~v3qb9r/Root/Payload/LOAC.app'
+2021-02-16 20:43:18 +0000  /usr/bin/xattr exited with 0
+2021-02-16 20:43:18 +0000  Processing step: IDEDistributionCodesignStep
+2021-02-16 20:43:18 +0000  Entitlements for <IDEDistributionItem: 0x7fd140272250; bundleID='com.watkins.loac', path='<DVTFilePath:0x7fd141fa2500:'/Users/srujansriram/Library/Developer/Xcode/Archives/2021-02-16/LOAC 2-16-21, 12.35 PM.xcarchive/Products/Applications/LOAC.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fd1552a5070; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fd13fa85270; name='Apple Development: Srujan Sriram (37BJ3KG46B)', hash='1CDE6D4B9EA10C1C4602D036FC4408337EB4C691', serialNumber='<DVTSigningCertificateSerialNumber: 0x7fd13cf6cf50>', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-02-16 20:04:10 +0000''>', entitlements='{
+    "application-identifier" = "LK9H442FSJ.com.watkins.loac";
+    "com.apple.developer.team-identifier" = LK9H442FSJ;
+    "get-task-allow" = 1;
+    "keychain-access-groups" =     (
+        "LK9H442FSJ.com.watkins.loac"
+    );
+}', teamID='LK9H442FSJ', identifier='com.watkins.loac', executablePath='<DVTFilePath:0x7fd1426eac00:'/Users/srujansriram/Library/Developer/Xcode/Archives/2021-02-16/LOAC 2-16-21, 12.35 PM.xcarchive/Products/Applications/LOAC.app/LOAC'>', hardenedRuntime='0'>'>: {
+    "application-identifier" = "LK9H442FSJ.com.watkins.loac";
+    "com.apple.developer.team-identifier" = LK9H442FSJ;
+    "get-task-allow" = 1;
+    "keychain-access-groups" =     (
+        "LK9H442FSJ.com.watkins.loac"
+    );
+}
+2021-02-16 20:43:18 +0000  Entitlements for <IDEDistributionItem: 0x7fd140272250; bundleID='com.watkins.loac', path='<DVTFilePath:0x7fd141fa2500:'/Users/srujansriram/Library/Developer/Xcode/Archives/2021-02-16/LOAC 2-16-21, 12.35 PM.xcarchive/Products/Applications/LOAC.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fd1552a5070; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fd13f616490; name='Apple Development: Srujan Sriram (37BJ3KG46B)', hash='1CDE6D4B9EA10C1C4602D036FC4408337EB4C691', serialNumber='<DVTSigningCertificateSerialNumber: 0x7fd13f0cddd0>', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-02-16 20:04:10 +0000''>', entitlements='{
+    "application-identifier" = "LK9H442FSJ.com.watkins.loac";
+    "com.apple.developer.team-identifier" = LK9H442FSJ;
+    "get-task-allow" = 1;
+    "keychain-access-groups" =     (
+        "LK9H442FSJ.com.watkins.loac"
+    );
+}', teamID='LK9H442FSJ', identifier='com.watkins.loac', executablePath='<DVTFilePath:0x7fd1426eac00:'/Users/srujansriram/Library/Developer/Xcode/Archives/2021-02-16/LOAC 2-16-21, 12.35 PM.xcarchive/Products/Applications/LOAC.app/LOAC'>', hardenedRuntime='0'>'> are: {
+    "application-identifier" = "LK9H442FSJ.com.watkins.loac";
+    "com.apple.developer.team-identifier" = LK9H442FSJ;
+    "get-task-allow" = 1;
+    "keychain-access-groups" =     (
+        "LK9H442FSJ.com.watkins.loac"
+    );
+}
+2021-02-16 20:43:18 +0000  Writing entitlements for <IDEDistributionItem: 0x7fd140272250; bundleID='com.watkins.loac', path='<DVTFilePath:0x7fd141fa2500:'/Users/srujansriram/Library/Developer/Xcode/Archives/2021-02-16/LOAC 2-16-21, 12.35 PM.xcarchive/Products/Applications/LOAC.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7fd1552a5070; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7fd13c8c6c40; name='Apple Development: Srujan Sriram (37BJ3KG46B)', hash='1CDE6D4B9EA10C1C4602D036FC4408337EB4C691', serialNumber='<DVTSigningCertificateSerialNumber: 0x7fd13f09b160>', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2021-02-16 20:04:10 +0000''>', entitlements='{
+    "application-identifier" = "LK9H442FSJ.com.watkins.loac";
+    "com.apple.developer.team-identifier" = LK9H442FSJ;
+    "get-task-allow" = 1;
+    "keychain-access-groups" =     (
+        "LK9H442FSJ.com.watkins.loac"
+    );
+}', teamID='LK9H442FSJ', identifier='com.watkins.loac', executablePath='<DVTFilePath:0x7fd1426eac00:'/Users/srujansriram/Library/Developer/Xcode/Archives/2021-02-16/LOAC 2-16-21, 12.35 PM.xcarchive/Products/Applications/LOAC.app/LOAC'>', hardenedRuntime='0'>'> to: /var/folders/63/wjlhwvpd5ts75cjh72w1_tgr0000gp/T/XcodeDistPipeline.~~~v3qb9r/entitlements~~~44m2o1
+2021-02-16 20:43:18 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CDE6D4B9EA10C1C4602D036FC4408337EB4C691' '--entitlements' '/var/folders/63/wjlhwvpd5ts75cjh72w1_tgr0000gp/T/XcodeDistPipeline.~~~v3qb9r/entitlements~~~44m2o1' '--preserve-metadata=identifier,flags,runtime' '/var/folders/63/wjlhwvpd5ts75cjh72w1_tgr0000gp/T/XcodeDistPipeline.~~~v3qb9r/Root/Payload/LOAC.app'
+2021-02-16 20:43:18 +0000  /var/folders/63/wjlhwvpd5ts75cjh72w1_tgr0000gp/T/XcodeDistPipeline.~~~v3qb9r/Root/Payload/LOAC.app: replacing existing signature
+2021-02-16 20:43:21 +0000  /var/folders/63/wjlhwvpd5ts75cjh72w1_tgr0000gp/T/XcodeDistPipeline.~~~v3qb9r/Root/Payload/LOAC.app: signed app bundle with Mach-O thin (arm64) [com.watkins.loac]
+2021-02-16 20:43:21 +0000  /usr/bin/codesign exited with 0
+2021-02-16 20:43:21 +0000  Processing step: IDEDistributionZipODRItemStep
+2021-02-16 20:43:21 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2021-02-16 20:43:21 +0000  Processing step: IDEDistributionCreateIPAStep
+2021-02-16 20:43:21 +0000  Running /usr/bin/ditto '-V' '-c' '-k' '--norsrc' '/var/folders/63/wjlhwvpd5ts75cjh72w1_tgr0000gp/T/XcodeDistPipeline.~~~v3qb9r/Root' '/var/folders/63/wjlhwvpd5ts75cjh72w1_tgr0000gp/T/XcodeDistPipeline.~~~v3qb9r/Packages/LOAC.ipa'
+2021-02-16 20:43:21 +0000  >>> Copying /var/folders/63/wjlhwvpd5ts75cjh72w1_tgr0000gp/T/XcodeDistPipeline.~~~v3qb9r/Root 
+2021-02-16 20:43:21 +0000  copying file ./Payload/LOAC.app/_CodeSignature/CodeResources ... 
+2021-02-16 20:43:21 +0000  5131 bytes for ./Payload/LOAC.app/_CodeSignature/CodeResources
+2021-02-16 20:43:21 +0000  copying file ./Payload/LOAC.app/AppIcon60x60@2x.png ... 
+2021-02-16 20:43:21 +0000  8217 bytes for ./Payload/LOAC.app/AppIcon60x60@2x.png
+2021-02-16 20:43:21 +0000  copying file ./Payload/LOAC.app/Base.lproj/LaunchScreen.nib ... 
+2021-02-16 20:43:21 +0000  3876 bytes for ./Payload/LOAC.app/Base.lproj/LaunchScreen.nib
+2021-02-16 20:43:21 +0000  copying file ./Payload/LOAC.app/Base.lproj/Main.storyboardc/33X-Xk-e4d-view-m6n-mb-AsH.nib ... 
+2021-02-16 20:43:21 +0000  7606 bytes for ./Payload/LOAC.app/Base.lproj/Main.storyboardc/33X-Xk-e4d-view-m6n-mb-AsH.nib
+2021-02-16 20:43:21 +0000  copying file ./Payload/LOAC.app/Base.lproj/Main.storyboardc/EEx-bJ-XFj-view-fvc-it-Qiq.nib ... 
+2021-02-16 20:43:21 +0000  6563 bytes for ./Payload/LOAC.app/Base.lproj/Main.storyboardc/EEx-bJ-XFj-view-fvc-it-Qiq.nib
+2021-02-16 20:43:21 +0000  copying file ./Payload/LOAC.app/Base.lproj/Main.storyboardc/UINavigationController-HTb-Lt-944.nib ... 
+2021-02-16 20:43:21 +0000  2263 bytes for ./Payload/LOAC.app/Base.lproj/Main.storyboardc/UINavigationController-HTb-Lt-944.nib
+copying file ./Payload/LOAC.app/Base.lproj/Main.storyboardc/UINavigationController-dxf-N9-FmM.nib ... 
+2021-02-16 20:43:21 +0000  2753 bytes for ./Payload/LOAC.app/Base.lproj/Main.storyboardc/UINavigationController-dxf-N9-FmM.nib
+2021-02-16 20:43:21 +0000  copying file ./Payload/LOAC.app/Base.lproj/Main.storyboardc/Info.plist ... 
+441 bytes for ./Payload/LOAC.app/Base.lproj/Main.storyboardc/Info.plist
+2021-02-16 20:43:21 +0000  copying file ./Payload/LOAC.app/Base.lproj/Main.storyboardc/UINavigationController-Ovv-1F-4EP.nib ... 
+2021-02-16 20:43:21 +0000  2034 bytes for ./Payload/LOAC.app/Base.lproj/Main.storyboardc/UINavigationController-Ovv-1F-4EP.nib
+copying file ./Payload/LOAC.app/Base.lproj/Main.storyboardc/bWD-6R-mwZ-view-xnI-aY-ZPt.nib ... 
+2021-02-16 20:43:21 +0000  12170 bytes for ./Payload/LOAC.app/Base.lproj/Main.storyboardc/bWD-6R-mwZ-view-xnI-aY-ZPt.nib
+2021-02-16 20:43:21 +0000  copying file ./Payload/LOAC.app/LOAC ... 
+2021-02-16 20:43:21 +0000  227600 bytes for ./Payload/LOAC.app/LOAC
+2021-02-16 20:43:21 +0000  copying file ./Payload/LOAC.app/Assets.car ... 
+2021-02-16 20:43:21 +0000  381295 bytes for ./Payload/LOAC.app/Assets.car
+copying file ./Payload/LOAC.app/AppIcon76x76@2x~ipad.png ... 
+2021-02-16 20:43:21 +0000  10589 bytes for ./Payload/LOAC.app/AppIcon76x76@2x~ipad.png
+2021-02-16 20:43:21 +0000  copying file ./Payload/LOAC.app/embedded.mobileprovision ... 
+2021-02-16 20:43:21 +0000  18222 bytes for ./Payload/LOAC.app/embedded.mobileprovision
+2021-02-16 20:43:21 +0000  copying file ./Payload/LOAC.app/Info.plist ... 
+2021-02-16 20:43:21 +0000  1466 bytes for ./Payload/LOAC.app/Info.plist
+copying file ./Payload/LOAC.app/PkgInfo ... 
+2021-02-16 20:43:21 +0000  8 bytes for ./Payload/LOAC.app/PkgInfo
+2021-02-16 20:43:21 +0000  /usr/bin/ditto exited with 0
+2021-02-16 20:43:21 +0000  Processing step: IDEDistributionAppStoreInformationStep
+2021-02-16 20:43:21 +0000  Skipping step: IDEDistributionAppStoreInformationStep because it said so
+2021-02-16 20:43:21 +0000  Processing step: IDEDistributionGenerateProcessedDistributionItems
+2021-02-16 20:43:21 +0000  IDEDistributionItem init <DVTFilePath:0x7fd141b98710:'/var/folders/63/wjlhwvpd5ts75cjh72w1_tgr0000gp/T/XcodeDistPipeline.~~~v3qb9r/Root/Payload/LOAC.app'>
+2021-02-16 20:43:21 +0000  Processing step: IDEDistributionCreateManifestStep

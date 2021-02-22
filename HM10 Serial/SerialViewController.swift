@@ -11,18 +11,10 @@ import CoreBluetooth
 import QuartzCore
 
 /// The option to add a \n or \r or \r\n to the end of the send message
-enum FWSSOption: Int {
+enum SensorOption: Int {
     case none,
-         spaOutputLevel,
-         tenDayTimerCountValue,
-         salineTestData,
-         fourMonthTimer,
-         currentOperatingVoltage, // Cell output
-         generationInProgress,    // Status
-         errorCodes,
-         cumulativeGenerationCycleCount, // Cycle meter
-         firmwareRevision,
-         catridgeStatus
+         fwss,
+         loac
 }
 
 /// The option to add a \n or \r or \r\n to the end of the send message
@@ -43,15 +35,24 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
 
 //MARK: IBOutlets
     
+    @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var firstTextView: UITextView!
     @IBOutlet weak var secondTextView: UITextView!
     @IBOutlet weak var thirdTextView: UITextView!
     @IBOutlet weak var fourthTextView: UITextView!
+    @IBOutlet weak var firstTextValueView: UITextView!
+    @IBOutlet weak var secondTextValueView: UITextView!
+    @IBOutlet weak var thirdTextValueView: UITextView!
+    @IBOutlet weak var fourthTextValueView: UITextView!
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint! // used to move the textField up when the keyboard is present
     @IBOutlet weak var barButton: UIBarButtonItem!
     @IBOutlet weak var navItem: UINavigationItem!
 
+    var dateFormatter : DateFormatter = DateFormatter()
+    var timestamp = ""
+    var firstFWSSReceived = false
+    var firstLOACReceived = false
 
 //MARK: Functions
     
@@ -62,11 +63,18 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
         serial = BluetoothSerial(delegate: self)
         
         // UI
+        titleTextView.text = "Select sensor from Settings and Connect to device"
         firstTextView.text = ""
         secondTextView.text = ""
         thirdTextView.text = ""
         fourthTextView.text = ""
+        firstTextValueView.text = ""
+        secondTextValueView.text = ""
+        thirdTextValueView.text = ""
+        fourthTextValueView.text = ""
         reloadView()
+        
+        dateFormatter.dateFormat = "yyyy-MMM-dd HH:mm:ss"
         
         NotificationCenter.default.addObserver(self, selector: #selector(SerialViewController.reloadView), name: NSNotification.Name(rawValue: "reloadStartViewController"), object: nil)
         
@@ -129,87 +137,150 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
     }
     
     func mainTextViewScrollToBottom() {
-        let range = NSMakeRange(NSString(string: firstTextView.text).length - 1, 1)
-        firstTextView.scrollRangeToVisible(range)
+        let range = NSMakeRange(NSString(string: firstTextValueView.text).length - 1, 1)
+        firstTextValueView.scrollRangeToVisible(range)
     }
     
-    func secondTextViewScrollToBottom() {
-        let range = NSMakeRange(NSString(string: secondTextView.text).length - 1, 1)
-        secondTextView.scrollRangeToVisible(range)
+    func secondTextValueViewScrollToBottom() {
+        let range = NSMakeRange(NSString(string: secondTextValueView.text).length - 1, 1)
+        secondTextValueView.scrollRangeToVisible(range)
     }
     
-    func thirdTextViewScrollToBottom() {
-        let range = NSMakeRange(NSString(string: thirdTextView.text).length - 1, 1)
-        thirdTextView.scrollRangeToVisible(range)
+    func thirdTextValueViewScrollToBottom() {
+        let range = NSMakeRange(NSString(string: thirdTextValueView.text).length - 1, 1)
+        thirdTextValueView.scrollRangeToVisible(range)
     }
     
-    func fourthTextViewScrollToBottom() {
-        let range = NSMakeRange(NSString(string: fourthTextView.text).length - 1, 1)
-        fourthTextView.scrollRangeToVisible(range)
+    func fourthTextValueViewScrollToBottom() {
+        let range = NSMakeRange(NSString(string: fourthTextValueView.text).length - 1, 1)
+        fourthTextValueView.scrollRangeToVisible(range)
     }
     
 
-//MARK: BluetoothSerialDelegate
-    
-    func serialDidReceiveString(_ message: String) {
-        print ("serialDidReceiveString \(message)")
-        // add the received text to the textView, optionally with a line break at the end
-
+    func processFwssMessage(_ message: String) {
+        firstLOACReceived = false
         
-        let msg = message.replacingOccurrences(of: "0x", with: "")
-        let array = msg.components(separatedBy: " ")
-        let fwssPref = UserDefaults.standard.integer(forKey: FWSSOptionKey)
-        if (array[1] == "29") {
-            print ("FWSS field with pref \(fwssPref)")
-            
-            let value1 = UInt8(array[7], radix: 16)
-            firstTextView.text = "\(value1!)"
-            let value2 = UInt8(array[8], radix: 16)
-            secondTextView.text = "\(value2!)"
-            let value3 = UInt8(array[9], radix: 16)
-            thirdTextView.text = "\(value3!)"
-            let value4 = UInt8(array[10], radix: 16)
-            fourthTextView.text = "\(value4!)"
-            
-
-//            switch fwssPref {
-//            case FWSSOption.none.rawValue:
-//                msg = message
-//            case FWSSOption.spaOutputLevel.rawValue:
-//                msg = array[7]
-//            case FWSSOption.tenDayTimerCountValue.rawValue:
-//                msg = array[8]
-//            case FWSSOption.salineTestData.rawValue:
-//                msg = array[9]
-//            case FWSSOption.fourMonthTimer.rawValue:
-//                msg = array[10]
-//            case FWSSOption.currentOperatingVoltage.rawValue:
-//                msg = array[11]
-//            case FWSSOption.generationInProgress.rawValue:
-//                msg = array[12]
-//            case FWSSOption.errorCodes.rawValue:
-//                msg = array[13]
-//            case FWSSOption.cumulativeGenerationCycleCount.rawValue:
-//                msg = array[16]+array[15]+array[14]
-//            case FWSSOption.firmwareRevision.rawValue:
-//                msg = array[17]
-//            case FWSSOption.catridgeStatus.rawValue:
-//                msg = array[18]
-//            default:
-//                msg = message
-//            }
+        // Set title
+        if (!firstFWSSReceived) {
+            titleTextView.text = "Waiting for FWSS Data..."
         }
         
-//        if (array[1] == "0x01") {
-//            firstTextView.text = msg
-//        } else if (array[1] == "0x33") {
-//            secondTextView.text = msg
-//        } else if (array[1] == "0x21") {
-//            thirdTextView.text = msg
-//        } else if (array[1] == "0x24") {
-//            fourthTextView.text = msg
-//        }
+        // Set field description column
+        firstTextView.text  = "Spa Output level"
+        secondTextView.text = "10 day timer"
+        thirdTextView.text  = "Saline test data..."
+        fourthTextView.text = "4 month timer"
+        
+        // Set field values column
+        let msg = message.replacingOccurrences(of: "0x", with: "")
+        let array = msg.components(separatedBy: " ")
+        if (array[1] == "29") {
+            // TODO: Check size of array.
+            firstFWSSReceived = true
+            let date = Date()
+            timestamp = dateFormatter.string(from: date)
+            titleTextView.text = "Last update at \(timestamp)"
+            
+            // Spa output level
+            let value1 = UInt8(array[7], radix: 16)
+            var display = "OFF"
+            if (value1 == 255) {
+                display = "NA"
+            } else if  (value1 == 0){
+                display = "OFF"
+            } else {
+                let val = Int(10.0 * Double(value1!) / 255)
+                display =  "\(val)/10"
+            }
+            firstTextValueView.text  = "\(display)"
+            
+            // 10 day timer
+            let value2 = UInt8(array[8], radix: 16)
+            secondTextValueView.text = "\(value2!)"
+            
+            // Saline data
+            let value3 = UInt8(array[9], radix: 16)
+            let lsbs = value3! & 0x3
+            if (lsbs == 0) {
+                display = "OK"
+            } else if (lsbs == 1) {
+                display = "HI"
+            } else if (lsbs == 3) {
+                display = "LO"
+            }
+            thirdTextValueView.text = display
+            
+            // 120 day timer
+            let value4 = UInt8(array[10], radix: 16)
+            fourthTextValueView.text = "\(value4!)"
+        }
     }
+
+    func processLoacMessage(_ message:String) {
+        firstFWSSReceived = false
+        
+        // Set title
+        if (!firstLOACReceived) {
+            titleTextView.text = "Waiting for LOAC Data..."
+        }
+        
+        // Set field description column
+        firstTextView.text  = "pH"
+        secondTextView.text = "ORP"
+        thirdTextView.text  = "Conductivity"
+        fourthTextView.text = "Chlorine"
+
+        let msg = message.replacingOccurrences(of: "0x", with: "")
+        let array = msg.components(separatedBy: " ")
+        if (array[1] == "37") {
+            // TODO: Check size of array.
+            firstLOACReceived = true
+            let date = Date()
+            timestamp = dateFormatter.string(from: date)
+            titleTextView.text = "Last update at \(timestamp)"
+            
+            // Spa output level
+            let value = UInt16(array[18]+array[17], radix: 16)
+            let display = value!/100
+            thirdTextValueView.text  = "\(display)"
+
+            // Set field values column
+            firstTextValueView.text  = "NA"
+            secondTextValueView.text = "NA"
+            fourthTextValueView.text = "NA"
+        }
+    }
+    
+    func processDefaultMessage(_ message:String) {
+        firstFWSSReceived        = false
+        firstLOACReceived        = false
+        titleTextView.text       = "Select sensor from Settings and Connect to device"
+        firstTextView.text       = ""
+        secondTextView.text      = ""
+        thirdTextView.text       = ""
+        fourthTextView.text      = ""
+        firstTextValueView.text  = ""
+        secondTextValueView.text = ""
+        thirdTextValueView.text  = ""
+        fourthTextValueView.text = ""
+    }
+    
+//MARK: BluetoothSerialDelegate
+    func serialDidReceiveString(_ message: String) {
+        let sensorPref = UserDefaults.standard.integer(forKey: SensorOptionKey)
+            
+        switch sensorPref {
+        case SensorOption.fwss.rawValue:
+            processFwssMessage(message)
+        case SensorOption.loac.rawValue:
+            processLoacMessage(message)
+        case SensorOption.none.rawValue:
+            processDefaultMessage(message)
+        default:
+            processDefaultMessage(message)
+        }
+    }
+
     
     func serialDidDisconnect(_ peripheral: CBPeripheral, error: NSError?) {
         reloadView()

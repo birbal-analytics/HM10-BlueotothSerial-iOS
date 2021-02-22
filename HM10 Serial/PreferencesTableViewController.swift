@@ -12,7 +12,7 @@ final class PreferencesTableViewController: UITableViewController {
     
 //MARK: Variables
     
-    var selectedFWSSOption: FWSSOption!
+    var selectedSensorOption: SensorOption!
     var selectedMessageOption: MessageOption!
     var selectedReceivedMessageOption: ReceivedMessageOption!
 
@@ -23,7 +23,8 @@ final class PreferencesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // get current prefs
-        selectedFWSSOption = FWSSOption(rawValue: UserDefaults.standard.integer(forKey: FWSSOptionKey))
+        print ("Settings view loaded...")
+        selectedSensorOption = SensorOption(rawValue: UserDefaults.standard.integer(forKey: SensorOptionKey))
         selectedMessageOption = MessageOption(rawValue: UserDefaults.standard.integer(forKey: MessageOptionKey))
         selectedReceivedMessageOption = ReceivedMessageOption(rawValue: UserDefaults.standard.integer(forKey: ReceivedMessageOptionKey))
 
@@ -41,24 +42,16 @@ final class PreferencesTableViewController: UITableViewController {
             tableView.cellForRow(at: IndexPath(row:  0, section: 0))?.accessoryType = .none
             tableView.cellForRow(at: IndexPath(row:  1, section: 0))?.accessoryType = .none
             tableView.cellForRow(at: IndexPath(row:  2, section: 0))?.accessoryType = .none
-            tableView.cellForRow(at: IndexPath(row:  3, section: 0))?.accessoryType = .none
-            tableView.cellForRow(at: IndexPath(row:  4, section: 0))?.accessoryType = .none
-            tableView.cellForRow(at: IndexPath(row:  5, section: 0))?.accessoryType = .none
-            tableView.cellForRow(at: IndexPath(row:  6, section: 0))?.accessoryType = .none
-            tableView.cellForRow(at: IndexPath(row:  7, section: 0))?.accessoryType = .none
-            tableView.cellForRow(at: IndexPath(row:  8, section: 0))?.accessoryType = .none
-            tableView.cellForRow(at: IndexPath(row:  9, section: 0))?.accessoryType = .none
-            tableView.cellForRow(at: IndexPath(row: 10, section: 0))?.accessoryType = .none
 
             // get the newly selected option
             let selectedCell = (indexPath as NSIndexPath).row
-            selectedFWSSOption = FWSSOption(rawValue: selectedCell)
+            selectedSensorOption = SensorOption(rawValue: selectedCell)
 
             // set new checkmark
             tableView.cellForRow(at: IndexPath(row: selectedCell, section: 0))?.accessoryType = UITableViewCell.AccessoryType.checkmark
             
             // and finally .. save it
-            UserDefaults.standard.set(selectedCell, forKey: FWSSOptionKey)
+            UserDefaults.standard.set(selectedCell, forKey: SensorOptionKey)
             
         } else if (indexPath as NSIndexPath).section == 1 {
             
@@ -103,9 +96,11 @@ final class PreferencesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // prevent the checkmarks from disappearing when they are scrolled out of screen and then back in
-        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == selectedMessageOption.rawValue {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == selectedSensorOption.rawValue {
             cell.accessoryType = .checkmark
-        } else  if (indexPath as NSIndexPath).section == 1 && (indexPath as NSIndexPath).row == selectedReceivedMessageOption.rawValue {
+        } else if (indexPath as NSIndexPath).section == 1 && (indexPath as NSIndexPath).row == selectedMessageOption.rawValue {
+            cell.accessoryType = .checkmark
+        } else  if (indexPath as NSIndexPath).section == 2 && (indexPath as NSIndexPath).row == selectedReceivedMessageOption.rawValue {
             cell.accessoryType = .checkmark
         }
     }
