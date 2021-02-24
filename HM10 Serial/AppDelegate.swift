@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         // register default user prefs
-        UserDefaults.standard.register(defaults: [SensorOptionKey: SensorOption.none.rawValue,
+        UserDefaults.standard.register(defaults: [SensorOptionKey: SensorOption.loac.rawValue,
                                                   MessageOptionKey: MessageOption.noLineEnding.rawValue,
                                                   ReceivedMessageOptionKey: ReceivedMessageOption.none.rawValue])
         

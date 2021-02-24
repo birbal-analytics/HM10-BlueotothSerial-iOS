@@ -174,7 +174,18 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
         // Set field values column
         let msg = message.replacingOccurrences(of: "0x", with: "")
         let array = msg.components(separatedBy: " ")
-        if (array[1] == "29") {
+        if (array[0] != "1c") {
+            print("Irrelavant preamble")
+            return
+        }
+        
+        if (array[1] == "01" && array[2] == "29") {
+//            print("Packet size of \(array.count)")
+            if (array.count != 22) {
+                print("Bad packet size")
+                return
+            }
+
             // TODO: Check size of array.
             firstFWSSReceived = true
             let date = Date()
@@ -189,8 +200,8 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
             } else if  (value1 == 0){
                 display = "OFF"
             } else {
-                let val = Int(10.0 * Double(value1!) / 255)
-                display =  "\(val)/10"
+                let val = Int(value1!)
+                display =  "\(val)"
             }
             firstTextValueView.text  = "\(display)"
             
@@ -232,7 +243,13 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
 
         let msg = message.replacingOccurrences(of: "0x", with: "")
         let array = msg.components(separatedBy: " ")
-        if (array[1] == "37") {
+        
+        if (array[0] != "1c") {
+            print("Irrelavant preamble")
+            return
+        }
+
+        if (array[1] == "01" && array[2] == "37") {
             // TODO: Check size of array.
             firstLOACReceived = true
             let date = Date()
@@ -241,7 +258,8 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
             
             // Spa output level
             let value = UInt16(array[18]+array[17], radix: 16)
-            let display = value!/100
+            print ("LOAC: \(array[17]), \(array[18]), \(value!)")
+            let display = Float(value!)/100
             thirdTextValueView.text  = "\(display)"
 
             // Set field values column
@@ -267,6 +285,7 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
     
 //MARK: BluetoothSerialDelegate
     func serialDidReceiveString(_ message: String) {
+        print (message)
         let sensorPref = UserDefaults.standard.integer(forKey: SensorOptionKey)
             
         switch sensorPref {
