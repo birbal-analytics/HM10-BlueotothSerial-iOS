@@ -12,7 +12,7 @@ import QuartzCore
 
 /// The option to add a \n or \r or \r\n to the end of the send message
 enum SensorOption: Int {
-    case none,
+    case all,
          fwss,
          loac
 }
@@ -293,7 +293,7 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
             processFwssMessage(message)
         case SensorOption.loac.rawValue:
             processLoacMessage(message)
-        case SensorOption.none.rawValue:
+        case SensorOption.all.rawValue:
             processDefaultMessage(message)
         default:
             processDefaultMessage(message)
