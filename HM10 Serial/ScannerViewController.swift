@@ -51,6 +51,7 @@ final class ScannerViewController: UIViewController, UITableViewDataSource, UITa
         // start scanning and schedule the time out
         serial.startScan()
         Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(ScannerViewController.scanTimeOut), userInfo: nil, repeats: false)
+        self.tableView.backgroundColor = UIColor.white
     }
 
     override func didReceiveMemoryWarning() {
@@ -106,6 +107,7 @@ final class ScannerViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // return a cell with the peripheral name as text in the label
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        cell.backgroundColor = UIColor.white
         let label = cell.viewWithTag(1) as! UILabel
         label.text = peripherals[(indexPath as NSIndexPath).row].peripheral.name
         return cell

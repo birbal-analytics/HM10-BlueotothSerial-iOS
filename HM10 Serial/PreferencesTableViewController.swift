@@ -103,6 +103,7 @@ final class PreferencesTableViewController: UITableViewController {
         } else  if (indexPath as NSIndexPath).section == 2 && (indexPath as NSIndexPath).row == selectedReceivedMessageOption.rawValue {
             cell.accessoryType = .checkmark
         }
+        cell.backgroundColor = UIColor.white
     }
     
     

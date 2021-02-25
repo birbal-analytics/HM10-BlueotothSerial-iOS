@@ -94,7 +94,7 @@ final class SerialViewController: UIViewController, UITextFieldDelegate, Bluetoo
     
     @objc func keyboardWillShow(_ notification: Notification) {
         // animate the text field to stay above the keyboard
-        var info = (notification as NSNotification).userInfo!
+        let info = (notification as NSNotification).userInfo!
         let value = info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
         let keyboardFrame = value.cgRectValue
         
